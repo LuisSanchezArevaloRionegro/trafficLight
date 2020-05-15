@@ -3,22 +3,44 @@ import React from "react";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
-export function Home() {
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+export class TrafficLight extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			selected: ""
+			//your state properties here
+		};
+	}
+	render() {
+		var selected1, selected2, selected3;
+		if (this.state.selected === "red") {
+			selected1 = "active";
+		} else if (this.state.selected === "orange") {
+			selected2 = "active";
+		} else if (this.state.selected === "green") {
+			selected3 = "active";
+		}
+		return (
+			//return your html here
+			<div className="trafficLight">
+				<div className="base">
+					<div className="base2" />
+				</div>
+				<div className="bodyTrafficLight">
+					<div
+						className={"firstLight " + selected1}
+						onClick={() => this.setState({ selected: "red" })}
+					/>
+					<div
+						className={"secondLight " + selected2}
+						onClick={() => this.setState({ selected: "orange" })}
+					/>
+					<div
+						className={"thirdLight " + selected3}
+						onClick={() => this.setState({ selected: "green" })}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
